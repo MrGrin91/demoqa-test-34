@@ -31,7 +31,7 @@ public class FormTests {
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__month").$(byText("15")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-
+        $("#uploadPicture").uploadFromClasspath("Test-Test.jpg");
         $("#currentAddress").setValue("Home");
         $("#state").click();
         $("#state").$(byText("NCR")).click();
@@ -45,7 +45,7 @@ public class FormTests {
         $(".table-responsive").shouldHave(text("8900123456"));
         $(".table-responsive").shouldHave(text("15 May,1991"));
         $(".table-responsive").shouldHave(text("Sports"));
-
+        $(".table-responsive").shouldHave(text("Test-Test.jpg"));
         $(".table-responsive").shouldHave(text("Home"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
     }
