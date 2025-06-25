@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class autotestHW {
+public class AutoFormTests {
     @BeforeAll
     static void setupConfig() {
         Configuration.pageLoadStrategy = "eager";
@@ -15,7 +15,7 @@ public class autotestHW {
     }
 
     @Test
-    public void fillFormAutoTest() {
+    public void fillFormTest() {
 
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
@@ -24,13 +24,12 @@ public class autotestHW {
         $("#lastName").setValue("Ruch");
         $("#userEmail").setValue("test@ya.ru");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("89001234567");
+        $("#userNumber").setValue("8900123456");
         $("#dateOfBirthInput").click();
 
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__month").$(byText("15")).click();
-        $("#uploadPicture").uploadFromClasspath("Test-Test.jpg");
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#currentAddress").setValue("Home");
         $("#state").click();
@@ -39,6 +38,13 @@ public class autotestHW {
         $("#city").$(byText("Delhi")).click();
         $("#submit").click();
 
-
+        $(".table-responsive").shouldHave(text("Vadim Ruch"));
+        $(".table-responsive").shouldHave(text("test@ya.ru"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("8900123456"));
+        $(".table-responsive").shouldHave(text("15 May,1991"));
+        $(".table-responsive").shouldHave(text("Sports"));
+        $(".table-responsive").shouldHave(text("Home"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
     }
 }
