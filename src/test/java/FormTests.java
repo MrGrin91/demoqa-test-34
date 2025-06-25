@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutoFormTests {
+public class FormTests {
     @BeforeAll
     static void setupConfig() {
         Configuration.pageLoadStrategy = "eager";
@@ -15,7 +15,7 @@ public class AutoFormTests {
     }
 
     @Test
-    public void fillFormTest() {
+    public void fillAutoTest() {
 
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
@@ -31,6 +31,7 @@ public class AutoFormTests {
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__month").$(byText("15")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
+
         $("#currentAddress").setValue("Home");
         $("#state").click();
         $("#state").$(byText("NCR")).click();
@@ -44,6 +45,7 @@ public class AutoFormTests {
         $(".table-responsive").shouldHave(text("8900123456"));
         $(".table-responsive").shouldHave(text("15 May,1991"));
         $(".table-responsive").shouldHave(text("Sports"));
+
         $(".table-responsive").shouldHave(text("Home"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
     }
