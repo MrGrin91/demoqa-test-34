@@ -24,7 +24,7 @@ public class FormTests {
         $("#lastName").setValue("Ruch");
         $("#userEmail").setValue("test@ya.ru");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("8900123456");
+        $("#userNumber").setValue("8901123456");
         $("#dateOfBirthInput").click();
 
         $(".react-datepicker__month-select").selectOption("May");
@@ -42,7 +42,7 @@ public class FormTests {
         $(".table-responsive").shouldHave(text("Vadim Ruch"));
         $(".table-responsive").shouldHave(text("test@ya.ru"));
         $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("8900123456"));
+        $(".table-responsive").shouldHave(text("8901123456"));
         $(".table-responsive").shouldHave(text("15 May,1991"));
         $(".table-responsive").shouldHave(text("Sports"));
         $(".table-responsive").shouldHave(text("Test-Test.jpg"));
