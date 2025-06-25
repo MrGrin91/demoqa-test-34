@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,6 +26,19 @@ public class autotestHW {
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("89001234567");
         $("#dateOfBirthInput").click();
+
+        $(".react-datepicker__month-select").selectOption("May");
+        $(".react-datepicker__year-select").selectOption("1991");
+        $(".react-datepicker__month").$(byText("15")).click();
+        $("#uploadPicture").uploadFromClasspath("Test-Test.jpg");
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#currentAddress").setValue("Home");
+        $("#state").click();
+        $("#state").$(byText("NCR")).click();
+        $("#city").click();
+        $("#city").$(byText("Delhi")).click();
+        $("#submit").click();
+
 
     }
 }
