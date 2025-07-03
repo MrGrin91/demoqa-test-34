@@ -21,6 +21,7 @@ public class ChekSoftAssertPage {
         $(("#wiki-tab")).click();
         $("#wiki-pages-box").$(byText("Show 3 more pages…")).click();
         $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
+        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
         sleep(5000);
     }
 }
