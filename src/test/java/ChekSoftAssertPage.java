@@ -19,5 +19,8 @@ public class ChekSoftAssertPage {
 
         open("selenide/selenide");
         $(("#wiki-tab")).click();
+        $("#wiki-pages-box").$(byText("Show 3 more pages…")).click();
+        $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
+        sleep(5000);
     }
 }
