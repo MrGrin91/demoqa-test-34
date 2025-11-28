@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selectors;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class FormTests {
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__month").$(byText("15")).click();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(Selectors.byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("Test-Test.jpg");
         $("#currentAddress").setValue("Home");
         $("#state").click();
