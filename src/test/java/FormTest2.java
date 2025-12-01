@@ -3,12 +3,19 @@
 // Метод -
 // Переменная -
 // @ - аннотации
+//@ParameterizedTest - означает разные исходные данные и тест будет запущен несколько раз
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.PObjects;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -26,11 +33,9 @@ public class FormTest2 {
     Faker FakerTest = new Faker();
 @Tag("formtest")
 @DisplayName("Тестируем форму на сайте")
-@ValueSource(strings = {
-        "Vad", "Dim", "Mash"
-})
-@ParameterizedTest(name = "Проверка пароля {0} ")
-    @Test
+@MethodSource("methodSourceExampleTest")
+
+    @ParameterizedTest
     public void letsfilltheform() {
         open("/text-box");
         executeJavaScript("$('#fixedban').remove()");
@@ -51,5 +56,14 @@ public class FormTest2 {
 
 
         sleep(5000);
+    }
+    static Stream<Arguments> methodSourceExampleTest() {
+        Faker FakerTest = new Faker();
+        return Stream.of(
+                // с первым запуском тест получит в виде аргументов строки и список
+                Arguments.of("Vadim"),
+                // со вторым запуском уже другую строку и список
+                Arguments.of(FakerTest.internet().emailAddress())
+        );
     }
 }
