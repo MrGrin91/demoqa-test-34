@@ -61,7 +61,7 @@ public class FormTest2 {
         Faker FakerTest = new Faker();
         return Stream.of(
                 // с первым запуском тест получит в виде аргументов строки и список
-                Arguments.of("Vadim"),
+                Arguments.of("Dima"),
                 // со вторым запуском уже другую строку и список
                 Arguments.of(FakerTest.internet().emailAddress())
         );
