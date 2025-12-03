@@ -4,6 +4,7 @@
 // Переменная -
 // @ - аннотации
 //@ParameterizedTest - означает разные исходные данные и тест будет запущен несколько раз
+//
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
