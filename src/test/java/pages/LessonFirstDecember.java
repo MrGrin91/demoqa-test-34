@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -35,13 +36,16 @@ public class LessonFirstDecember {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
+        Allure.step("Заполнение личных данных", () -> {
         mainPage.setUserName("Vad");
         mainPage.setUserEmail(emailAddress);
         mainPage.setUserAddress("Moscow");
         mainPage.setUserPAddress("Yes,Moscow!");
         $("#submit").click();
+        });
 
-        $("#name").shouldHave(text("Vad"));
+        mainPage.checkName("Vad");
+        //$("#name").shouldHave(text("Vad"));
         $("#email").shouldHave(text(emailAddress));
         $("p#currentAddress").shouldHave(text("Moscow"));
         $("p#permanentAddress").shouldHave(text("Yes,Moscow!"));
