@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
@@ -21,6 +22,7 @@ public class LessonFirstDecember {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1200x900";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.timeout = 30000;
     }
 
     PObjects mainPage = new PObjects();
@@ -44,11 +46,12 @@ public class LessonFirstDecember {
         $("#submit").click();
         });
 
+        Allure.step("Заполнение дополнительных данных", () -> {
         mainPage.checkName("Vad");
-        //$("#name").shouldHave(text("Vad"));
-        $("#email").shouldHave(text(emailAddress));
-        $("p#currentAddress").shouldHave(text("Moscow"));
-        $("p#permanentAddress").shouldHave(text("Yes,Moscow!"));
+        mainPage.checkEmail(emailAddress);
+        mainPage.checkAddress("Moscow");
+        mainPage.checkPAddress("Yes,Moscow!");
+        });
     }
 
     static Stream<Arguments> emailProvider() {

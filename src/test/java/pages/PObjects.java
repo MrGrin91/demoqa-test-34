@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PObjects {
@@ -11,9 +12,9 @@ public class PObjects {
     SelenideElement currentAddress = $("#currentAddress");
     SelenideElement permanentAddress = $("#permanentAddress");
     SelenideElement shouldhaveName = $("#name");
-    // SelenideElement shouldhaveEmail = $("#name");
-   // SelenideElement shouldhaveAddress = $("#name");
-   // SelenideElement shouldhavePAdress = $("#name");
+    SelenideElement shouldhaveEmail = $("#email");
+    SelenideElement shouldhaveAddress = $("p#currentAddress");
+    SelenideElement shouldhavePAddress = $("p#permanentAddress");
 
     @Step("Установка значения имени")
     public PObjects setUserName(String userNameValue) {
@@ -41,7 +42,25 @@ public class PObjects {
     }
     @Step("Проверка имени")
     public PObjects checkName(String chekNameValue) {
-        shouldhaveName.setValue(chekNameValue);
+        shouldhaveName.shouldHave(text(chekNameValue));
+
+        return this;
+    }
+    @Step("Проверка имейла")
+    public PObjects checkEmail(String chekEmailValue) {
+        shouldhaveEmail.shouldHave(text(chekEmailValue));
+
+        return this;
+    }
+    @Step("Проверка адреса")
+    public PObjects checkAddress(String chekAddressValue) {
+        shouldhaveAddress.shouldHave(text(chekAddressValue));
+
+        return this;
+    }
+    @Step("Проверка п. адреса")
+    public PObjects checkPAddress(String chekPAddressValue) {
+        shouldhavePAddress.shouldHave(text(chekPAddressValue));
 
         return this;
     }
