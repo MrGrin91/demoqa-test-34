@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import helpers.Attach;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,6 +33,15 @@ public class LessonFirstDecember {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo("Last video");
     }
 
     PObjects mainPage = new PObjects();
