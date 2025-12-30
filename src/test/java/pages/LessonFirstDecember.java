@@ -2,9 +2,11 @@ package pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import helpers.Attach;
 import io.qameta.allure.Allure;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -42,6 +44,11 @@ public class LessonFirstDecember {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo("Last video");
+    }
+
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     PObjects mainPage = new PObjects();
