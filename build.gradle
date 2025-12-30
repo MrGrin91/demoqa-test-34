@@ -33,3 +33,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.register('property_test', Test) {
+    useJUnitPlatform {
+        includeTags("jenkinstest")
+    }
+}
