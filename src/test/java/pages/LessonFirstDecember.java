@@ -60,7 +60,9 @@ public class LessonFirstDecember {
     @MethodSource("emailProvider")
     @ParameterizedTest(name = "Проверка пароля {0} ")
     public void successFillForm(String emailAddress) {
+        Allure.step("Открываем браузер", () -> {
         open("/text-box");
+        });
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
